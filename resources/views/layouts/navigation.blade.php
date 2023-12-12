@@ -16,6 +16,7 @@
                     <x-nav-link :href="route('home')" :active="request()->routeIs('home')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
+                    @auth
                     <!-- Post Page -->
                     <x-nav-link :href="route('posts.index')" :active="request()->routeIs('posts.index')">
                         {{ __('Post') }}
@@ -32,6 +33,7 @@
                     <x-nav-link :href="route('comments.index')" :active="request()->routeIs('comments.index')">
                         {{ __('Comment') }}
                     </x-nav-link>
+                    @endauth
                 </div>
             </div>
 

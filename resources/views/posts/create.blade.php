@@ -1,4 +1,5 @@
 <x-app-layout>
+    @auth
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
             {{ __('Post Form') }}
@@ -6,11 +7,13 @@
         <!-- Back to posts list -->
         <div class="flex items-center justify-end mt-4">
             <a class="underline text-sm text-white dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('posts.index') }}">
-            Back to posts list
+                Back to posts list
             </a>
         </div>
     </x-slot>
+    @endauth
 
+    @auth
     <div class="py-12">
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
@@ -74,8 +77,8 @@
                             <x-select-input id="comment" class="block mt-1 w-full" name="comment" :disabled="false">
                                 <option value="">Select Comment Option</option>
                                 <option value="restricted">Restricted</option>
-                                <option value="private">Private Post</option>
-                                <option value="public">Public Post</option>
+                                <option value="private">Private</option>
+                                <option value="public">Public</option>
                             </x-select-input>
                             <x-input-error :messages="$errors->get('comment')" class="mt-2" />
                         </div>
@@ -91,4 +94,5 @@
             </div>
         </div>
     </div>
+    @endauth
 </x-app-layout>
