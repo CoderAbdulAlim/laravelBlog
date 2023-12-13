@@ -56,11 +56,11 @@
                                 @foreach($posts as $post)
                                 <!-- Dynamic Table rows START-->
                                 <tr class="hover:bg-gray-100 dark:hover:bg-gray-800">
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    <td class="px-6 py-4 whitespace-nowrap max-w-xs overflow-x-hidden">
                                         {{ $post->title }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        <a href="" class="font-medium">{{ $post->user->name }}</a>
+                                        <a href="" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800">{{ $post->user->name }}</a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         {{ $post->type }}

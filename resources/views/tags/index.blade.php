@@ -45,7 +45,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         {{ $tag->name }}
                                     </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                                    <td class="px-6 py-4 whitespace-nowrap max-w-xs overflow-x-hidden">
                                         {{ $tag->description }}
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
