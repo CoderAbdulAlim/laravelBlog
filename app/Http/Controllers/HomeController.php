@@ -20,9 +20,4 @@ class HomeController extends Controller
 
         return view('home', compact('posts'));
     }
-
-    public function show(Post $post)
-    {
-        return view('posts.show', compact('post'));
-    }
 }

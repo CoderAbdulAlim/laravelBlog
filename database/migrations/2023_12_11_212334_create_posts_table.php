@@ -17,7 +17,7 @@ return new class extends Migration
             $table->string('title');
             $table->text('content');
             $table->string('type');
-            $table->integer('category');
+            $table->foreignId('category_id');
             $table->string('publish');
             $table->string('comment');
             $table->timestamps();

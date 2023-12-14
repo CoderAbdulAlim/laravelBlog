@@ -14,7 +14,6 @@ class CategoryController extends Controller
 
     public function index()
     {
-
         $categories = Category::orderBy('created_at', 'desc')->paginate(10);
 
         return view('categories.index', [
@@ -41,5 +40,17 @@ class CategoryController extends Controller
         ]);
 
         return back();
+    }
+
+    public function show(Category $category)
+    {
+        return view('categories.show', compact('category'));
+    }
+
+    public function destroy(Category $category)
+    {
+        $category->delete();
+
+        return redirect()->route('categories.index')->with('success', 'Category deleted successfully');
     }
 }

@@ -45,9 +45,9 @@ class DatabaseSeeder extends Seeder
             'email' => 'sardar@gmail.com',
         ]);
 
-        Post::factory()->count(100)->create();
-        Category::factory()->count(10)->create();
-        Tag::factory()->count(50)->create();
-        Comment::factory()->count(200)->create();
+        Post::factory()->count(30)->create();
+        Category::factory()->count(5)->create();
+        Tag::factory()->count(20)->create();
+        Comment::factory()->count(90)->create();
     }
 }

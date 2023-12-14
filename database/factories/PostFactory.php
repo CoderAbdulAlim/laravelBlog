@@ -21,7 +21,7 @@ class PostFactory extends Factory
             'title' => $this->faker->sentence(4),
             'content' => $this->faker->sentence(200),
             'type' => $this->faker->randomElement(['page-post', 'blog-post']),
-            'category' => $this->faker->numberBetween(1, 10),
+            'category_id' => $this->faker->numberBetween(1, 5),
             'publish' => $this->faker->randomElement(['draft', 'public', 'private']),
             'comment' => $this->faker->randomElement(['restricted', 'public', 'private']),
         ];

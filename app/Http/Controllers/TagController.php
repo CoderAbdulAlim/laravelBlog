@@ -42,4 +42,16 @@ class TagController extends Controller
 
         return back();
     }
+
+    public function show(Tag $tag)
+    {
+        return view('tags.show', compact('tag'));
+    }
+
+    public function destroy(Tag $tag)
+    {
+        $tag->delete();
+
+        return redirect()->route('tags.index')->with('success', 'Tag deleted successfully');
+    }
 }

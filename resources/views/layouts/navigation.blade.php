@@ -72,6 +72,9 @@
                 @endauth
                 @guest
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex h-16">
+                    <x-nav-link :href="route('about')" :active="request()->routeIs('about')">
+                        {{ __('About') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('login')" :active="request()->routeIs('login')">
                         {{ __('Login') }}
                     </x-nav-link>

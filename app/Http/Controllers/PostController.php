@@ -33,7 +33,7 @@ class PostController extends Controller
             'title' => 'required',
             'content' => 'required',
             'type' => 'required',
-            'category' => 'required',
+            // 'category' => 'required',
             'publish' => 'required',
             'comment' => 'required',
         ]);
@@ -56,11 +56,23 @@ class PostController extends Controller
             'title' => $request->title,
             'content' => $request->content,
             'type' => $request->type,
-            'category' => $request->category,
+            // 'category' => $request->category,
             'publish' => $request->publish,
             'comment' => $request->comment,
         ]);
 
         return back();
+    }
+
+    public function show(Post $post)
+    {
+        return view('posts.show', compact('post'));
+    }
+
+    public function destroy(Post $post)
+    {
+        $post->delete();
+
+        return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
     }
 }

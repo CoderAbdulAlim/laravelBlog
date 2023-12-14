@@ -13,7 +13,7 @@ class Post extends Model
         'title',
         'content',
         'type',
-        'category',
+        // 'category',
         'publish',
         'comment'
     ];

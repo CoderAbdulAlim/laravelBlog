@@ -38,4 +38,16 @@ class CommentController extends Controller
 
         return back();
     }
+
+    public function show(Comment $comment)
+    {
+        return view('comments.show', compact('comment'));
+    }
+
+    public function destroy(Comment $comment)
+    {
+        $comment->delete();
+
+        return redirect()->route('comments.index')->with('success', 'Comment deleted successfully');
+    }
 }
