@@ -7,6 +7,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\UserPostController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -45,6 +46,9 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')
 // Route::get('/posts/{post}/edit', [PostController::class, 'edit'])->name('posts.edit');
 // Route::patch('/posts/{post}/update', [PostController::class, 'update'])->name('posts.update');
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
+
+
+Route::get('users/{user}/posts', UserPostController::class)->name('users.user.posts');
 
 
 // Category route

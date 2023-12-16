@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Post;
+use Illuminate\Auth\AuthenticationException;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -16,7 +17,7 @@ class PostController extends Controller
     {
         $posts = Post::latest()->paginate(10);
 
-        return view('posts.index',[
+        return view('posts.index', [
             'posts' => $posts
         ]);
     }
@@ -71,8 +72,24 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
+        // $this->authorize('delete-post', $post);
+        $this->authorize('delete', $post);
         $post->delete();
 
-        return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
+        return back();
+
+        // manual method
+        // if (!$post->ownerBy(auth()->user())) {
+            // manual method::1
+            // return response(null, 401);
+            // manual method::2
+        //     throw new AuthenticationException();
+        // }
+        // alternative
+        // $this->authorize('delete', $post);
+        // $post->delete();
+
+        // return back();
+        // // return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
     }
 }

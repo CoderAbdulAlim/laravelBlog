@@ -21,6 +21,8 @@
                         <div class="px-6 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider truncate">
 
                             <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ $post->title }}</h2>
+                            <div>Category : {{ $post->category->name }}</div>
+                            <div>Tag : {{ var_dump($post->tag) }}</div>
                         </div>
 
                         <!-- Post Show START -->
@@ -30,9 +32,11 @@
 
                                     <div class="px-6 py-4 break-words">
                                         {{ $post->content }}
-                                    <div>
-                                        <a href="{{ route('comments.create', $post) }}" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">Write a comment</a>
-                                    </div>
+                                        @auth
+                                        <div>
+                                            <a href="{{ route('comments.create', $post) }}" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">Write a comment</a>
+                                        </div>
+                                        @endauth
                                     </div>
                                 </div>
                                 @if($post->comments)

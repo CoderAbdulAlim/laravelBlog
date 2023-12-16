@@ -2,7 +2,7 @@
     @auth
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Post List') }}
+            {{ __('User Posts') }}
         </h2>
         <!-- Write new post -->
         <div class="flex items-center justify-end mt-4">
@@ -53,7 +53,7 @@
                                     <td class="px-6 py-4 whitespace-nowrap max-w-xs overflow-x-hidden">
                                         {{ $post->id .' # '. $post->title }}
                                         <div>
-                                            By::<a href="{{ route('users.user.posts', $post->user_id) }}" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">{{ $post->user->name }}</a>
+                                            By::<a href="#" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">{{ $post->user->name }}</a>
 
                                             In::<a href="#" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800">{{ $post->category->name }}</a>
                                         </div>
@@ -72,11 +72,6 @@
                                             <div>
                                                 <a href="{{ route('posts.show', $post) }}" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">Show</a>
                                             </div>
-                                            <!--@-if ($post->user_id == auth()->id()) -->
-                                            <!-- 2nd alternative -->
-                                            <!--@-if ($post->ownerBy(auth()->user())) -->
-                                            <!-- 3rd alternative -->
-                                            <!--@-if (auth()->user()->ownsPost($post)) -->
                                             <div>
                                                 <a href="#" class="underline text-sm text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 mr-3">Edit</a>
                                             </div>
@@ -89,7 +84,6 @@
                                                 </form>
                                             </div>
                                             @endcan
-                                            <!-- @-end-if -->
                                         </div>
                                     </td>
                                 </tr>

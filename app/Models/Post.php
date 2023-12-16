@@ -18,15 +18,23 @@ class Post extends Model
         'comment'
     ];
 
-    public function user(){
+    public function user()
+    {
         return $this->belongsTo(User::class);
     }
 
-    public function category(){
+    public function ownerBY(User $user)
+    {
+        return $user->id === $this->user_id;
+    }
+
+    public function category()
+    {
         return $this->belongsTo(Category::class);
     }
 
-    public function comments(){
+    public function comments()
+    {
         return $this->hasMany(Comment::class);
     }
 }
