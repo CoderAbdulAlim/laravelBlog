@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Post;
 use Illuminate\Http\Request;
 
 class CommentController extends Controller
@@ -22,19 +23,21 @@ class CommentController extends Controller
         ]);
     }
 
-    public function create()
+    public function create(Post $post)
     {
-        return view('comments.create');
+        return view('comments.create', compact('post'));
     }
 
     public function store(Request $request)
     {
-
         $this->validate($request, [
             'comment' => 'required',
+            'post_id' => 'required|exists:posts,id',
         ]);
-
-        $request->user()->comments()->create($request->only('comment'));
+        $comment = $request->user()->comments()->create([
+            'comment' => $request->input('comment'),
+            'post_id' => $request->input('post_id'),
+        ]);
 
         return back();
     }

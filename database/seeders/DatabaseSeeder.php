@@ -47,7 +47,7 @@ class DatabaseSeeder extends Seeder
 
         Post::factory()->count(30)->create();
         Category::factory()->count(5)->create();
-        Tag::factory()->count(20)->create();
+        Tag::factory()->count(100)->create();
         Comment::factory()->count(90)->create();
     }
 }

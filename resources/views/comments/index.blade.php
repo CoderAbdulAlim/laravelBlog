@@ -2,14 +2,8 @@
     @auth
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('Comment List') }}
+            {{ __('All Comment') }}
         </h2>
-        <!-- Write new comments -->
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-white dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('comments.create') }}">
-                Write a new comment
-            </a>
-        </div>
     </x-slot>
     @endauth
 
@@ -18,7 +12,6 @@
         <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    {{ __("Comments") }}
 
                     <!-- Post table END -->
                     <div class="mt-4">
@@ -55,11 +48,11 @@
                                         <a href="" class="font-medium">{{ $comment->user->name }}</a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
-                                        @if($comment->user_id == auth()->id())
                                         <div class="items-center">
                                             <div>
                                                 <a href="{{ route('comments.show', $comment) }}" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">Show</a>
                                             </div>
+                                            @if($comment->user_id == auth()->id())
                                             <div>
                                                 <a href="#" class="underline text-sm text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 mr-3">Edit</a>
                                             </div>
@@ -70,8 +63,8 @@
                                                     <button type="submit" class="text-sm text-red-600 hover:text-red-900 dark:text-red-400 dark:hover:text-red-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 dark:focus:ring-offset-gray-800">Delete</button>
                                                 </form>
                                             </div>
+                                            @endif
                                         </div>
-                                        @endif
                                     </td>
                                 </tr>
                                 @endforeach

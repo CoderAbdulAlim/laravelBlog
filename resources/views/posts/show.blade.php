@@ -20,7 +20,7 @@
                     <div class="hover:bg-gray-100 dark:hover:bg-gray-800">
                         <div class="px-6 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider truncate">
 
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ $post->title }}</h2>
+                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ $post->id . ' # ' . $post->title }}</h2>
                             <div>Category : {{ $post->category->name }}</div>
                             <div>Tag : {{ var_dump($post->tag) }}</div>
                         </div>
@@ -50,7 +50,7 @@
                                 </div>
                                 @endforeach
                                 @else
-                                <p>There is no Comment!</p>
+                                <p>There is no Post!</p>
                                 @endif
 
                             </div>

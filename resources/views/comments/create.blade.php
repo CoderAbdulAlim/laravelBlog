@@ -18,8 +18,13 @@
         <div class="max-w-4xl mx-auto sm:px-6 lg:px-8">
             <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
                 <div class="p-6 text-gray-900 dark:text-gray-100">
-                    <form action=" {{ route('comments.store') }}" method="POST">
+                    <form action="{{ route('comments.store', ['post' => $post]) }}" method="POST">
                         @csrf
+
+                        <!-- Post Preview -->
+                        <div class="mt-6">
+                            {{ 'Comment of :: ' . $post->id . ' # ' .  $post->title}}
+                        </div>
 
                         <!-- Comment -->
                         <div class="mt-6">
@@ -27,6 +32,9 @@
                             <x-textarea-input id="comment" class="block mt-1 w-full" name="comment" :value="old('comment')" required autofocus autocomplete="comment"></x-textarea-input>
                             <x-input-error :messages="$errors->get('comment')" class="mt-2" />
                         </div>
+
+                        <!-- Hidden Input for Post ID -->
+                        <input type="hidden" name="post_id" value="{{ $post->id }}">
 
                         <!-- Submit Button -->
                         <div class="mt-6">
