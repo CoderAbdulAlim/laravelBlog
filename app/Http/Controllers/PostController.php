@@ -15,7 +15,7 @@ class PostController extends Controller
 
     public function index()
     {
-        $posts = Post::latest()->paginate(10);
+        $posts = Post::with('user')->with('category')->latest()->paginate(10);
 
         return view('posts.index', [
             'posts' => $posts
@@ -39,20 +39,6 @@ class PostController extends Controller
             'comment' => 'required',
         ]);
 
-
-        // MANUAL ENTRY
-        // $post = Post::create([
-        //     'user_id' => auth()->id(),
-        //     // 'user_id' => auth()->user()->id(),
-        //     // 'user_id' => $request->user()->id,
-        //     'title' => $request->title,
-        //     'content' => $request->content,
-        //     'type' => $request->type,
-        //     'category' => $request->category,
-        //     'publish' => $request->publish,
-        //     'comment' => $request->comment,
-        // ]);
-
         $request->user()->posts()->create([
             'title' => $request->title,
             'content' => $request->content,
@@ -72,24 +58,9 @@ class PostController extends Controller
 
     public function destroy(Post $post)
     {
-        // $this->authorize('delete-post', $post);
         $this->authorize('delete', $post);
         $post->delete();
 
         return back();
-
-        // manual method
-        // if (!$post->ownerBy(auth()->user())) {
-            // manual method::1
-            // return response(null, 401);
-            // manual method::2
-        //     throw new AuthenticationException();
-        // }
-        // alternative
-        // $this->authorize('delete', $post);
-        // $post->delete();
-
-        // return back();
-        // // return redirect()->route('posts.index')->with('success', 'Post deleted successfully');
     }
 }

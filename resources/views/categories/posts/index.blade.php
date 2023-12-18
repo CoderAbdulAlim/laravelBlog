@@ -2,12 +2,12 @@
     @auth
     <x-slot name="header">
         <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
-            {{ __('All Post') }}
+            {{ __('Posts under Category') }}
         </h2>
-        <!-- Write new post -->
+        <!-- Create new category -->
         <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-white dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('posts.create') }}">
-                Write a new post
+            <a class="underline text-sm text-white dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800" href="{{ route('categories.create') }}">
+                Create a new category
             </a>
         </div>
     </x-slot>
@@ -50,9 +50,9 @@
                                     <td class="px-6 py-4 whitespace-nowrap max-w-xs overflow-x-hidden">
                                         {{ $post->id .' # '. $post->title }}
                                         <div>
-                                            By::<a href="{{ route('users.user.posts', ['user' => $post->user_id]) }}" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">{{ $post->user->name }}</a>
+                                            By::<a href="#" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">{{ $post->user->name }}</a>
 
-                                            In::<a href="{{ route('categories.category.posts', ['category' => $post->category_id]) }}" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800">{{ $post->category->name }}</a>
+                                            In::<a href="#" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800">{{ $post->category->name }}</a>
                                         </div>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
@@ -69,11 +69,6 @@
                                             <div>
                                                 <a href="{{ route('posts.show', $post) }}" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">Show</a>
                                             </div>
-                                            <!--@-if ($post->user_id == auth()->id()) -->
-                                            <!-- 2nd alternative -->
-                                            <!--@-if ($post->ownerBy(auth()->user())) -->
-                                            <!-- 3rd alternative -->
-                                            <!--@-if (auth()->user()->ownsPost($post)) -->
                                             <div>
                                                 <a href="#" class="underline text-sm text-blue-600 hover:text-blue-900 dark:text-blue-400 dark:hover:text-blue-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 dark:focus:ring-offset-gray-800 mr-3">Edit</a>
                                             </div>
@@ -86,7 +81,6 @@
                                                 </form>
                                             </div>
                                             @endcan
-                                            <!-- @-end-if -->
                                         </div>
                                     </td>
                                 </tr>

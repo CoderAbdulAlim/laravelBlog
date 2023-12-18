@@ -32,6 +32,9 @@
                                         Description
                                     </th>
                                     <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
+                                        Post Under Tag
+                                    </th>
+                                    <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider">
                                         Action
                                     </th>
                                 </tr>
@@ -47,6 +50,9 @@
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap max-w-xs overflow-x-hidden">
                                         {{ $tag->description }}
+                                    </td>
+                                    <td class="px-6 py-4 whitespace-wrap max-w-xs overflow-x-hidden">
+                                            <a href="{{ route('tags.tag.posts', ['tag' => $tag->id]) }}" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">Show all post under this tag</a>
                                     </td>
                                     <td class="px-6 py-4 whitespace-nowrap">
                                         <div class="flex items-center">

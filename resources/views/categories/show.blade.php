@@ -20,7 +20,7 @@
                     <div class="hover:bg-gray-100 dark:hover:bg-gray-800">
                         <div class="px-6 py-3 text-left text-sm font-medium text-gray-500 dark:text-gray-300 uppercase tracking-wider truncate">
 
-                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ $category->name }}</h2>
+                            <h2 class="mt-6 text-xl font-semibold text-gray-900 dark:text-white">{{ $category->id . ' # ' . $category->name }}</h2>
                         </div>
 
                         <!-- Post Show START -->
@@ -31,7 +31,7 @@
                                     <div class="px-6 py-4 break-words">
                                         {{ $category->description }}
                                         <div>
-                                            <a href="#" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">Show all post under this category</a>
+                                            <a href="{{ route('categories.category.posts', ['category' => $category->id]) }}" class="underline text-sm text-green-600 hover:text-green-900 dark:text-green-400 dark:hover:text-green-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 dark:focus:ring-offset-gray-800 mr-3">Show all post under this category</a>
                                         </div>
                                     </div>
                                 </div>

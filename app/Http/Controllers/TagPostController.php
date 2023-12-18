@@ -2,20 +2,21 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Tag;
 use Illuminate\Http\Request;
 
-class UserPostController extends Controller
+class TagPostController extends Controller
 {
     public function __construct()
     {
         $this->middleware(['auth'])->only(['store']);
     }
 
-    public function index(Request $request, $user)
+    public function index(Request $request, Tag $tag)
     {
-        $posts = $request->user()->find($user)->posts()->with('category')->paginate();
+        $posts = $tag->posts()->paginate();
 
-        return view('users.posts.index', [
+        return view('tags.posts.index', [
             'posts' => $posts
         ]);
     }

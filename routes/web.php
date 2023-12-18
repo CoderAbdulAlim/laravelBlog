@@ -2,11 +2,13 @@
 
 use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\CategoryPostController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TagController;
+use App\Http\Controllers\TagPostController;
 use App\Http\Controllers\UserPostController;
 use Illuminate\Support\Facades\Route;
 
@@ -48,7 +50,7 @@ Route::get('/posts/{post}', [PostController::class, 'show'])->name('posts.show')
 Route::delete('/posts/{post}', [PostController::class, 'destroy'])->name('posts.destroy');
 
 
-Route::get('users/{user}/posts', UserPostController::class)->name('users.user.posts');
+Route::get('users/{user}/posts', [UserPostController::class, 'index'])->name('users.user.posts');
 
 
 // Category route
@@ -58,12 +60,16 @@ Route::post('/categories', [CategoryController::class, 'store'])->name('categori
 Route::get('/categories/{category}', [CategoryController::class, 'show'])->name('categories.show');
 Route::delete('/categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
+Route::get('categories/{category}/posts', [CategoryPostController::class, 'index'])->name('categories.category.posts');
+
 // Tag route
 Route::get('/tags', [TagController::class, 'index'])->name('tags.index');
 Route::get('/tags/create', [TagController::class, 'create'])->name('tags.create');
 Route::post('/tags', [TagController::class, 'store'])->name('tags.store');
 Route::get('/tags/{tag}', [TagController::class, 'show'])->name('tags.show');
 Route::delete('/tags/{tag}', [TagController::class, 'destroy'])->name('tags.destroy');
+
+Route::get('tags/{tag}/posts', [TagPostController::class, 'index'])->name('tags.tag.posts');
 
 // Comment route
 Route::get('/comments', [CommentController::class, 'index'])->name('comments.index');
